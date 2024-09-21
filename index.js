@@ -58,9 +58,35 @@ app.get("/", (req, res) => {
       description: "Analyze data and build predictive models...",
     },
   ];
-
-  // Pass the `allJobs` array to the EJS template
   res.render("home", { allJobs });
+});
+
+app.get("/user-login", (req, res) => {
+  res.render("userlogin");
+});
+
+app.post("/user-login", (req, res) => {});
+
+app.get("/user-register", (req, res) => {
+  res.render("userregister");
+});
+
+app.post("/user-register", (req, res) => {});
+
+app.get("/company-login", (req, res) => {
+  res.render("companylogin");
+});
+
+app.post("/company-login", (req, res) => {});
+
+app.get("/company-register", (req, res) => {
+  res.render("company-register");
+});
+
+app.post("/company-register", (req, res) => {});
+
+app.get("/company-register", (req, res) => {
+  res.render("companylogin");
 });
 
 app.use(express.json());
