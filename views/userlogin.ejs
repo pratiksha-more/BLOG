@@ -31,8 +31,8 @@
                     <li class="nav-item">
                         <h1 id="register">Register</h1>
                         <ul class="dropdown" id="register-dropdown">
-                            <li><a href="user-reg">User</a></li>
-                            <li><a href="company-reg">Company</a></li>
+                            <li><a href="user-register">User</a></li>
+                            <li><a href="company-register">Company</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -51,14 +51,14 @@
 
     <main>
         <h2>User Login</h2>
-        <form action="/user-login" method="POST" id="user-login-form">
+        <form action="/user-login?id=<%=record?._id%>" method="POST" id="user-login-form">
             <div>
                 <label for="user-email">Email:</label>
-                <input type="email" id="user-email" name="email" required>
+                <input type="email" id="user-email" value="<%= record?.email%>" name="email" required>
             </div>
             <div>
                 <label for="user-password">Password:</label>
-                <input type="password" id="user-password" name="password" required>
+                <input type="password" id="user-password" name="password" value="<%= record?.password%>" required>
             </div>
             <button type="submit" id="user-login-submit">Login</button>
         </form>

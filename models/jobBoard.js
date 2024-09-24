@@ -22,7 +22,7 @@ const jobSchema = new mongoose.Schema(
       type: Number,
     },
     employmentType: {
-      type: String, // e.g., Full-time, Part-time, Contract
+      type: String, 
     },
   },
   { timestamps: true }

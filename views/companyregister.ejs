@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Board</title>
+</head>
+
+<body>
+    <nav>
+        <div class="main container flex">
+            <div class="main-home">
+                <a href="/" class="logo">
+                    <img src="https://cdn.evbuc.com/eventlogos/7433117/careerconnect1.jpg" alt="Job Board Logo" />
+                </a>
+                <a href="/" class="logo" id="home">
+                    Home
+                </a>
+            </div>
+
+            <div class="item1">
+                <ul class="flex">
+                    <li class="nav-item">
+                        <h1 id="login">Login</h1>
+                        <ul class="dropdown" id="login-dropdown">
+                            <li><a href="user-login">User</a></li>
+                            <li><a href="company-login">Company</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <h1 id="register">Register</h1>
+                        <ul class="dropdown" id="register-dropdown">
+                            <li><a href="user-register">User</a></li>
+                            <li><a href="company-register">Company</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="item2 flex">
+                <form action="/search" method="get">
+                    <input type="text" name="key" placeholder="eg. Software Engineer" id="search-text" />
+                    <button type="submit" id="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <main>
+        <h2>Company Registration</h2>
+        <form action="/company-register" method="POST" id="company-register-form">
+            <div>
+                <label for="company-name">Company Name:</label>
+                <input type="text" id="company-name" name="companyName" required>
+            </div>
+            <div>
+                <label for="company-email">Email:</label>
+                <input type="email" id="company-email" name="email" required>
+            </div>
+            <div>
+                <label for="company-password">Password:</label>
+                <input type="password" id="company-password" name="password" required>
+            </div>
+            <button type="submit" id="company-register-submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/company-login">Login here</a></p>
+    </main>
+    <footer>
+        
+    </footer>
+
+
+    <script>
+        // JavaScript to handle dropdown visibility
+        document.getElementById('login').addEventListener('click', function () {
+            const loginDropdown = document.getElementById('login-dropdown');
+            loginDropdown.style.display = loginDropdown.style.display === 'block' ? 'none' : 'block';
+
+            // Close register dropdown if open
+            document.getElementById('register-dropdown').style.display = 'none';
+        });
+
+        document.getElementById('register').addEventListener('click', function () {
+            const registerDropdown = document.getElementById('register-dropdown');
+            registerDropdown.style.display = registerDropdown.style.display === 'block' ? 'none' : 'block';
+
+            // Close login dropdown if open
+            document.getElementById('login-dropdown').style.display = 'none';
+        });
+
+        // Close dropdowns if clicked outside
+        window.onclick = function (event) {
+            if (!event.target.matches('#login') && !event.target.matches('#register')) {
+                document.getElementById('login-dropdown').style.display = 'none';
+                document.getElementById('register-dropdown').style.display = 'none';
+            }
+        };
+    </script>
+
+
+
+
+
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    p {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    a {
+        text-transform: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .container {
+        max-width: 1180px;
+        margin-inline: auto;
+        overflow: hidden;
+    }
+
+    .flex {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+
+    }
+
+    nav {
+        position: fixed;
+        background: rgba(128, 128, 128, 0.173);
+        box-shadow: 0 0 10px gray;
+        top: 0;
+        z-index: 99;
+        left: 0;
+        right: 0;
+        height: 80px;
+
+        display: inline;
+        justify-content: space-around;
+
+
+    }
+
+    .main-home {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #home,
+    #login,
+    #register {
+        font-size: 24px;
+
+        font-weight: bold;
+
+        text-decoration: none;
+        color: black;
+    }
+
+
+    .main-home .logo img {
+        max-height: 50px;
+
+    }
+
+    .main {
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+
+    .logo img {
+        width: 150px;
+        height: 60px;
+    }
+
+    .item1 ul {
+        gap: 5px;
+        color: black;
+        font-weight: bold;
+    }
+
+    .nav-item:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+    .item1 .nav-item {
+
+        margin-right: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+
+    }
+
+
+
+    .item2 button,
+    input {
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+        border: none;
+    }
+
+    .item2 input {
+        width: 20vw;
+    }
+
+    .item2 button {
+        background-color: rgba(0, 42, 255, 0.666);
+        color: white;
+        padding: 8px 12px;
+        font-weight: 500;
+    }
+
+    .item2 button:hover {
+        background-color: rgba(0, 0, 255, 0.981);
+    }
+
+    main {
+        max-width: 400px;
+        margin: 200px auto;
+        padding: 50px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Registration link */
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            font-size: 12px;
+            color: #777;
+        }
+
+        @media (max-width: 500px) {
+            main {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .main-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+
+    .card {
+        margin: 10px;
+        box-sizing: border-box;
+        background-color: #fff;
+        min-height: 300px;
+        box-shadow: 0 0 4px #d4ecff;
+        border-radius: 4px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        background-color: #f9f9f900;
+        box-shadow: 1px 1px 8px #d4d4d460;
+        transform: translateY(-2px);
+    }
+
+    .card-image img {
+        width: 100%;
+        object-fit: cover;
+        height: 150px;
+    }
+
+    .job-card {
+        padding: 10px;
+    }
+
+    .job-title,
+    .job-company,
+    .job-location {
+        margin-block: 10px;
+    }
+
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        background-color: white;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        border: 1px solid #ccc;
+        font-weight: 100;
+        font-size: 15px;
+    }
+
+
+    .dropdown li {
+        padding: 10px;
+
+    }
+
+    .dropdown li a {
+        display: block;
+        text-decoration: none;
+    }
+
+    .dropdown li a:hover {
+        background-color: rgba(0, 0, 255, 0.671);
+        color: white;
+    }
+
+    .item1 li {
+        color: black;
+    }
+</style>
+
+
+</html>

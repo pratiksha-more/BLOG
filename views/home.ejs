@@ -5,6 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Board</title>
+
+
+
 </head>
 
 <body>
@@ -31,8 +34,8 @@
                     <li class="nav-item">
                         <h1 id="register">Register</h1>
                         <ul class="dropdown" id="register-dropdown">
-                            <li><a href="user-reg">User</a></li>
-                            <li><a href="company-reg">Company</a></li>
+                            <li><a href="user-register">User</a></li>
+                            <li><a href="company-register">Company</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -70,17 +73,21 @@
             </div>
             <% }) %>
     </main>
+    <footer>
 
+        <%- include('partials/footer') %>
+
+    </footer>
 
 
 
     <script>
-        // JavaScript to handle dropdown visibility
+
         document.getElementById('login').addEventListener('click', function () {
             const loginDropdown = document.getElementById('login-dropdown');
             loginDropdown.style.display = loginDropdown.style.display === 'block' ? 'none' : 'block';
 
-            // Close register dropdown if open
+
             document.getElementById('register-dropdown').style.display = 'none';
         });
 
@@ -88,11 +95,11 @@
             const registerDropdown = document.getElementById('register-dropdown');
             registerDropdown.style.display = registerDropdown.style.display === 'block' ? 'none' : 'block';
 
-            // Close login dropdown if open
+
             document.getElementById('login-dropdown').style.display = 'none';
         });
 
-        // Close dropdowns if clicked outside
+
         window.onclick = function (event) {
             if (!event.target.matches('#login') && !event.target.matches('#register')) {
                 document.getElementById('login-dropdown').style.display = 'none';
@@ -125,6 +132,7 @@
 
     ul {
         list-style: none;
+        color: black;
     }
 
     .container {
@@ -187,6 +195,12 @@
     .logo img {
         width: 150px;
         height: 60px;
+    }
+
+    .item1 {
+
+        display: flex;
+        align-items: center;
     }
 
     .item1 ul {
@@ -313,8 +327,9 @@
         color: white;
     }
 
-    .item1 li{
+    .item1 li {
         color: black;
+        font-weight: bold;
     }
 </style>
 
